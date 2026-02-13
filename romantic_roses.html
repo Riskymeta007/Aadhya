@@ -199,6 +199,106 @@
         opacity: 0;
       }
     }
+    
+    /* Popup Modal Styles */
+    #popupModal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    #popupModal.show {
+      display: flex !important;
+    }
+    
+    .popup-content {
+      background: linear-gradient(135deg, #1a0000, #330000);
+      padding: 50px 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 50px rgba(255, 51, 102, 0.5);
+      border: 3px solid #ff3366;
+      max-width: 90%;
+      animation: popupBounce 0.6s ease;
+      position: relative;
+    }
+    
+    .popup-content h2 {
+      color: #ff3366;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-shadow: 0 0 15px rgba(255, 51, 102, 0.7);
+      animation: wiggle 1s ease-in-out infinite;
+    }
+    
+    .popup-content p {
+      color: #ffccdd;
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      font-weight: bold;
+      text-shadow: 0 0 10px rgba(255, 204, 221, 0.3);
+    }
+    
+    .popup-button {
+      background: linear-gradient(135deg, #ff3366, #cc0033);
+      color: white;
+      border: none;
+      padding: 18px 45px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 5px 20px rgba(255, 51, 102, 0.5);
+      transition: all 0.3s ease;
+    }
+    
+    .popup-button:hover {
+      background: linear-gradient(135deg, #ff4477, #dd0044);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(255, 51, 102, 0.7);
+    }
+    
+    .popup-button:active {
+      transform: translateY(0);
+    }
+    
+    @keyframes popupBounce {
+      0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+      50% { transform: scale(1.1) rotate(10deg); }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+    
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-5deg); }
+      75% { transform: rotate(5deg); }
+    }
+    
+    @media (max-width: 768px) {
+      .popup-content {
+        padding: 30px 20px;
+      }
+      
+      .popup-content h2 {
+        font-size: 2rem;
+      }
+      
+      .popup-content p {
+        font-size: 1.4rem;
+      }
+      
+      .popup-button {
+        font-size: 1.1rem;
+        padding: 15px 35px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -266,7 +366,21 @@
     <div class="vase"></div>
   </div>
   
+  <!-- Popup Modal -->
+  <div id="popupModal">
+    <div class="popup-content">
+      <h2>Heeeheeeeee 😏</h2>
+      <p>I'm not done yet!</p>
+      <button class="popup-button" onclick="goToSongsPage()">
+        Let's go! 💕
+      </button>
+    </div>
+  </div>
+  
   <script>
+    console.log('Page loaded - script starting');
+    
+    // Create falling roses
     const container = document.getElementById('fallingRoses');
     const numRoses = 50;
     
@@ -297,6 +411,26 @@
       
       container.appendChild(rose);
     }
+    
+    console.log('Falling roses created');
+    
+    // Show popup after 3 seconds
+    setTimeout(function() {
+      console.log('Showing popup now...');
+      const popup = document.getElementById('popupModal');
+      popup.classList.add('show');
+      console.log('Popup should be visible now');
+    }, 3000);
+    
+    // Navigate to songs page
+    function goToSongsPage() {
+      console.log('Button clicked! Navigating to songs page...');
+      // IMPORTANT: Change this to match your actual songs page filename
+      // Check your files and use the exact name
+      window.location.href = 'songs-page-final.html';
+    }
+    
+    console.log('Script completed');
   </script>
 </body>
 </html>

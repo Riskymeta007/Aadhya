@@ -1,117 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Red Roses</title>
-    <style>
-      body {
-        background: #fdf6f6;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        flex-direction: column;
-        font-family: Arial, sans-serif;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Romantic Roses</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #ffe6eb;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
 
-      #thankyou {
-        font-size: 1.5rem;
-        margin-bottom: 20px;
-        color: #b30000;
-      }
+    #thankyou {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #b30000;
+      margin-bottom: 30px;
+      text-align: center;
+    }
 
-      .flower {
-        position: relative;
-        width: 200px;
-        height: 300px;
-      }
+    .bouquet {
+      position: relative;
+      width: 200px;
+      height: 300px;
+    }
 
-      .f-wrapper {
-        position: absolute;
-        bottom: 40px;
-        left: 50%;
-        transform: translateX(-50%);
-      }
+    .rose {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #ff4d4d, #b30000);
+      box-shadow: inset -5px -5px 10px rgba(0,0,0,0.3),
+                  2px 2px 6px rgba(0,0,0,0.2);
+    }
 
-      .flower__line {
-        background: linear-gradient(to bottom, #006400, #228B22);
-        width: 6px;
-        height: 120px;
-        margin: 0 auto;
-      }
+    .rose--1 { top: 0; left: 70px; }
+    .rose--2 { top: 40px; left: 20px; }
+    .rose--3 { top: 40px; right: 20px; }
 
-      .f {
-        position: relative;
-        width: 120px;
-        height: 120px;
-        margin: 0 auto;
-      }
+    .stem {
+      position: absolute;
+      width: 4px;
+      height: 120px;
+      background: linear-gradient(to bottom, #006400, #228B22);
+      bottom: 40px;
+    }
 
-      /* Rose petals */
-      .flower__leaf {
-        width: 60px;
-        height: 60px;
-        border-radius: 50% 50% 40% 40%;
-        background: radial-gradient(circle at 30% 30%, #ff4d4d, #b30000);
-        box-shadow: inset -5px -5px 10px rgba(0,0,0,0.3),
-                    2px 2px 6px rgba(0,0,0,0.2);
-        position: absolute;
-      }
+    .stem--1 { left: 90px; }
+    .stem--2 { left: 60px; }
+    .stem--3 { left: 120px; }
 
-      /* Position petals around the center */
-      .flower__leaf--1 { top: 0; left: 30px; }
-      .flower__leaf--2 { top: 20px; left: 0; }
-      .flower__leaf--3 { top: 20px; right: 0; }
-      .flower__leaf--4 { bottom: 20px; left: 0; }
-      .flower__leaf--5 { bottom: 20px; right: 0; }
-      .flower__leaf--6 { bottom: 0; left: 30px; }
-      .flower__leaf--7 { top: 40px; left: 15px; }
-      .flower__leaf--8 { top: 40px; right: 15px; }
+    .leaf {
+      position: absolute;
+      width: 20px;
+      height: 10px;
+      background: #228B22;
+      border-radius: 50%;
+      transform: rotate(-30deg);
+    }
 
-      /* Falling petal */
-      .flower__fall-down--red {
-        background: radial-gradient(circle at 30% 30%, #ff6666, #990000);
-        animation: fall 4s ease-in forwards;
-      }
+    .leaf--left { left: 50px; top: 180px; }
+    .leaf--right { left: 130px; top: 180px; }
 
-      @keyframes fall {
-        0% { transform: translateY(0); opacity: 1; }
-        100% { transform: translateY(200px); opacity: 0; }
-      }
+    .vase {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 100px;
+      background: rgba(255,255,255,0.3);
+      border: 2px solid rgba(255,255,255,0.6);
+      border-radius: 20px 20px 10px 10px;
+    }
 
-      /* Vase */
-      .flower__glass {
-        background: rgba(255,255,255,0.2);
-        border: 2px solid rgba(255,255,255,0.4);
-        border-radius: 10px;
-        width: 80px;
-        height: 40px;
-        margin: 0 auto;
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-    </style>
-  </head>
-  <body>
-    <div id="thankyou"><b>Thank you for being my girlfriend</b></div>
-    <div class="flower">
-      <div class="f-wrapper">
-        <div class="flower__line"></div>
-        <div class="f">
-          <div class="flower__leaf flower__leaf--1"></div>
-          <div class="flower__leaf flower__leaf--2"></div>
-          <div class="flower__leaf flower__leaf--3"></div>
-          <div class="flower__leaf flower__leaf--4"></div>
-          <div class="flower__leaf flower__leaf--5"></div>
-          <div class="flower__leaf flower__leaf--6"></div>
-          <div class="flower__leaf flower__leaf--7"></div>
-          <div class="flower__leaf flower__leaf--8 flower__fall-down--red"></div>
-        </div>
-      </div>
-      <div class="flower__glass"></div>
-    </div>
-  </body>
+    .falling-petal {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle at 30% 30%, #ff6666, #990000);
+      border-radius: 50% 50% 40% 40%;
+      top: 100px;
+      left: 150px;
+      animation: fall 4s ease-in forwards;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(150px); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div id="thankyou">Thank you for being my girlfriend</div>
+  <div class="bouquet">
+    <div class="rose rose--1"></div>
+    <div class="rose rose--2"></div>
+    <div class="rose rose--3"></div>
+
+    <div class="stem stem--1"></div>
+    <div class="stem stem--2"></div>
+    <div class="stem stem--3"></div>
+
+    <div class="leaf leaf--left"></div>
+    <div class="leaf leaf--right"></div>
+
+    <div class="falling-petal"></div>
+    <div class="vase"></div>
+  </div>
+</body>
 </html>

@@ -160,10 +160,88 @@
         width: 200px;
       }
     }
+    
+    /* Custom Popup Modal */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    .popup-overlay.show {
+      display: flex;
+    }
+    
+    .popup-box {
+      background: linear-gradient(135deg, #fff 0%, #ffe6f0 100%);
+      padding: 50px 60px;
+      border-radius: 30px;
+      box-shadow: 0 15px 50px rgba(255, 23, 68, 0.5);
+      text-align: center;
+      max-width: 90%;
+      animation: popIn 0.5s ease;
+      border: 5px solid #ff1744;
+    }
+    
+    .popup-message {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #ff1744;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    
+    .popup-hearts {
+      font-size: 3rem;
+      animation: heartBeat 1s ease infinite;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes popIn {
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      25% { transform: scale(1.2); }
+      50% { transform: scale(1); }
+      75% { transform: scale(1.2); }
+    }
   </style>
 </head>
 <body>
   <div class="falling-hearts" id="fallingHearts"></div>
+  
+  <!-- Custom Popup -->
+  <div class="popup-overlay" id="popupOverlay">
+    <div class="popup-box">
+      <div class="popup-hearts">💕💖💕</div>
+      <div class="popup-message">
+        PROMISE CHESTUNNA THIS WILL BE THE BEST DECISION OF YOUR LIFE.
+      </div>
+      <div class="popup-hearts">💕💖💕</div>
+    </div>
+  </div>
   
   <div class="content">
     <div id="valentineQuestion"><b>Will you be my valentine?🥰</b></div>
@@ -205,10 +283,18 @@
       container.appendChild(heart);
     }
     
-    // Yes button shows message and redirects
+    // Yes button shows custom popup and redirects after 5 seconds
     document.getElementById("yesButton").addEventListener("click", function () {
-      alert("PROMISE CHESTUNNA THIS WILL BE THE BEST DECISION OF YOUR LIFE.");
-      location.href = 'thankyou.html';
+      console.log("Yes button clicked!");
+      
+      // Show custom popup
+      const popup = document.getElementById('popupOverlay');
+      popup.classList.add('show');
+      
+      // Wait 5 seconds then redirect
+      setTimeout(function() {
+        location.href = 'romantic_roses.html';
+      }, 5000);
     });
     
     // Yes button grows when No is clicked

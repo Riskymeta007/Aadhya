@@ -167,7 +167,7 @@
   
   <div class="content">
     <div id="valentineQuestion"><b>Will you be my valentine?🥰</b></div>
-    <button class="answerButton" onclick="location.href='thankyou.html'">
+    <button class="answerButton" id="yesButton">
       Yes
     </button>
     <button class="answerButton" id="noButton">I no no wanna 😭</button>
@@ -205,9 +205,15 @@
       container.appendChild(heart);
     }
     
+    // Yes button shows message and redirects
+    document.getElementById("yesButton").addEventListener("click", function () {
+      alert("PROMISE CHESTUNNA THIS WILL BE THE BEST DECISION OF YOUR LIFE.");
+      location.href = 'thankyou.html';
+    });
+    
     // Yes button grows when No is clicked
     document.getElementById("noButton").addEventListener("click", function () {
-      var yesButton = document.querySelector('button[onclick*="thankyou.html"]');
+      var yesButton = document.getElementById('yesButton');
       var currentFontSize = parseInt(window.getComputedStyle(yesButton).fontSize);
       yesButton.style.fontSize = currentFontSize + 10 + "px";
     });
